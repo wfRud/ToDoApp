@@ -6,16 +6,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-<link href="/assets/style.css" rel="stylesheet"></head>
+<link href="/style.css" rel="stylesheet"></head>
 
 <body>
-    <div class="test">Test
-        <h2 class="test_title">Tytuł</h2>
-        <h3>test live servera</h3>
-        <h3>test live servera</h3>
-        <h3>test live servera</h3>
-        <h3>test live servera</h3>
-    </div>
-<script type="text/javascript" src="/assets/bundle.js"></script></body>
+    <section class="container">
+        <div class="taskPanel">
+            <h2 class="taskPanel_title">Enter the tasks!!</h2>
+            <textarea name="" id="taskPanelText" class="taskPanel_text"></textarea>
+            <button class="addTaskBtn">Add</button>
+        </div>
+        <div class="todoPanel">
+            <div class="searchPanel">
+                <h3 class="searchPanel_title">Search</h3>
+                <input type="text" id="search">
+                <div class="seperateLine"></div>
+            </div>
+            <div class="todo_single-task">
+                <p class="task_date">19/082019 21:26:08</p>
+                <task_text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua.</task_text>
+                <div class="task_Icons">
+                    <div class="icon icon_edit"><img src="#" alt="edit icon">
+                    </div>
+                    <div class="icon icon_done"><img src="#" alt="done icon">
+                    </div>
+                    <div class="icon icon_delete"><img src="#" alt="delete icon"></div>
+                </div>
+                <div class="task_Mark"></div>
+                <div class="seperateLine"></div>
+            </div>
+            <div class="todo_single-task">
+                <p class="task_date">19/082019 21:26:08</p>
+                <task_text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua.</task_text>
+                <div class="task_Icons">
+                    <div class="icon icon_edit"><img src="#" alt="edit icon">
+                    </div>
+                    <div class="icon icon_done"><img src="#" alt="done icon">
+                    </div>
+                    <div class="icon icon_delete"><img src="#" alt="delete icon"></div>
+                </div>
+                <div class="task_Mark"></div>
+                <div class="seperateLine"></div>
+            </div>
+            <div class="todo_single-task">
+                <p class="task_date">19/082019 21:26:08</p>
+                <task_text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua.</task_text>
+                <div class="task_Icons">
+                    <div class="icon icon_edit"><img src="#" alt="edit icon">
+                    </div>
+                    <div class="icon icon_done"><img src="#" alt="done icon">
+                    </div>
+                    <div class="icon icon_delete"><img src="#" alt="delete icon"></div>
+                </div>
+                <div class="task_Indicator"></div>
+                <div class="seperateLine"></div>
+            </div>
+
+        </div>
+    </section>
+<script type="text/javascript" src="/bundle.js"></script></body>
 
 </html>
