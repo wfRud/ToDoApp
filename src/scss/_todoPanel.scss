@@ -22,7 +22,7 @@
             height: 55%;
             width: 40%;
             padding: 5px;
-            border: 1px solid $dark-trim;
+            border: 1px solid rgba($dark-trim, $alpha);
             outline: none;
         }
     }
