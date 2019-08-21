@@ -1,0 +1,56 @@
+.todo_single-task {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    min-height: 100px;
+    margin-top: 15px;
+    font-family: $main-font;
+    border-bottom: $border;
+
+    .single_task_content {
+        position: relative;
+        width: 60%;
+        height: 80%;
+        margin-bottom: 20px;
+
+        .task_date {
+            margin-left: 20px;
+            margin-bottom: 10px;
+            font-size: $size-xs;
+            font-weight: $light-weight;
+        }
+
+        .task_text {
+            margin-left: 20px;
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            min-height: 80px;
+            height: 100%;
+            width: 5px;
+            background-color: $theme-purple;
+        }
+    }
+
+    .task_Icons {
+        align-self: center;
+        display: flex;
+        justify-content: space-between;
+        width: 15%;
+        margin-bottom: 20px;
+    }
+
+    .task_indicator {
+        order: 1;
+        min-height: 80px;
+        height: 85%;
+        width: 5px;
+        margin-right: 20px;
+        background-color: $theme-purple;
+    }
+}

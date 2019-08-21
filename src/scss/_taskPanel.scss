@@ -26,17 +26,18 @@
 
     .addTaskBtn {
         align-self: flex-end;
-        width: 80px;
-        height: 32px;
-        margin: 15px 15px 21px 0;
+        width: 85px;
+        height: 38px;
+        margin: 15px 0 21px 0;
         color: $task-field-color;
         background-color: $task-green;
         border: none;
         border-radius: 25px;
         cursor: pointer;
-        transition: background-color, width .2s;
+        transition: background-color .2s;
 
         &:hover {
+            background-color: $theme-green;
             animation: rubberBand 1s;
         }
     }
