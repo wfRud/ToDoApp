@@ -1,0 +1,43 @@
+.taskPanel {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    margin: 20px 0;
+    padding: 15px 40px;
+    background-color: #fff;
+    box-shadow: $border-shadow;
+
+    .taskPanel_title {
+        font-size: $size-xs;
+        font-family: $main-font;
+        cursor: default;
+    }
+
+    .taskPanel_text {
+        height: 93px;
+        padding: 5px;
+        outline: none;
+        font-size: $size-m;
+        resize: none;
+    }
+
+    .addTaskBtn {
+        align-self: flex-end;
+        width: 80px;
+        height: 32px;
+        margin: 15px 15px 21px 0;
+        color: $task-field-color;
+        background-color: $task-green;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: background-color, width .2s;
+
+        &:hover {
+            animation: rubberBand 1s;
+        }
+    }
+}
