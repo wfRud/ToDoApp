@@ -1,8 +1,0 @@
-.babelrc
-node_modules/
-package-lock.json
-webpack.config.babel.js
-dist/
-src/js
-src/images
-.gitignore
