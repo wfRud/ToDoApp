@@ -22,7 +22,16 @@
         }
 
         .task_text {
+            width: 100%;
+            min-height: 80px;
+            max-height: 100%;
             margin-left: 20px;
+            font-family: $main-font;
+            font-size: $size-m;
+            overflow: hidden;
+            resize: none;
+            border: none;
+            outline: none;
         }
 
         &::before {
@@ -89,7 +98,7 @@
 // Task Done Effects
 .todo_single-task.done {
     background-color: rgba($theme-green, $alpha);
-    border-bottom: $theme-green;
+    border-bottom: $border-bottom-done;
     animation: pulse .5s;
 
     &:last-child {
@@ -104,8 +113,57 @@
             padding-top: 5px;
         }
 
+        .task_text {
+            background-color: rgba($theme-green, 0);
+        }
+
         &::before {
             background-color: $theme-green;
+        }
+    }
+}
+
+// Task Edit Effects
+.todo_single-task.edit {
+    border-bottom: $border-bottom-edit;
+
+    &:last-child {
+        .icon-edit {
+            background-image: url("data:image/svg+xml, #{$hover-icon-edit}");
+            transform: scale(1.6);
+        }
+    }
+
+    .single_task_content {
+        .task_date {
+            padding-top: 5px;
+        }
+
+        &::before {
+            background-color: $task-edit;
+        }
+    }
+}
+
+// Task Delete Effects
+.todo_single-task.delete {
+    border-bottom: $border-bottom-delete;
+    animation: zoomOut 1.2s;
+
+    &:last-child {
+        .icon-delete {
+            background-image: url("data:image/svg+xml, #{$hover-icon-delete}");
+            transform: scale(1.6);
+        }
+    }
+
+    .single_task_content {
+        .task_date {
+            padding-top: 5px;
+        }
+
+        &::before {
+            background-color: $task-delete;
         }
     }
 }
