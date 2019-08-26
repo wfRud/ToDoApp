@@ -1,4 +1,4 @@
-.taskPanel {
+.task_Panel {
     grid-column: 1/2;
     grid-row: 1/2;
     display: flex;
@@ -10,13 +10,13 @@
     background-color: #fff;
     box-shadow: $border-shadow;
 
-    .taskPanel_title {
+    .task_Panel_title {
         font-size: $size-xs;
         font-family: $main-font;
         cursor: default;
     }
 
-    .taskPanel_text {
+    .task_Panel_text {
         height: 93px;
         padding: 5px;
         outline: none;

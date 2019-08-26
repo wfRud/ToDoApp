@@ -1,9 +1,9 @@
-.todoPanel {
+.todo_Panel {
     padding: 40px 41px 41px 33px;
     background-color: $task-field-color;
     box-shadow: $border-shadow;
 
-    .searchPanel {
+    .search_Panel {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -12,7 +12,7 @@
         font-family: $main-font;
         border-bottom: 1px solid $gray-line;
 
-        .searchPanel_title {
+        .search_Panel_title {
             font-size: $size-l;
             letter-spacing: .5px;
             cursor: default;
