@@ -13,12 +13,15 @@ class TaskPanel {
     addTask() {
         this.addBtn.addEventListener('click', () => {
             const singleNote = new SingleNote();
-
-            this.paneltext.classList.remove('alert');
-            this.toDoPanel.appendChild(singleNote.initTask(this.getTaskText()));
-            this.setEmptyValue();
-            this.pushTaskToStorage(singleNote);
-            this.getTasks();
+            if (!this.panelTextValidate()) {
+                this.paneltext.classList.add('alert');
+            } else {
+                this.paneltext.classList.remove('alert');
+                this.toDoPanel.appendChild(singleNote.initTask(this.getTaskText()));
+                this.setEmptyValue();
+                this.pushTaskToStorage(singleNote);
+                this.getTasks();
+            }
         });
     };
 
@@ -34,6 +37,12 @@ class TaskPanel {
     getTasks() {
         console.log(this.taskStorage);
     };
+
+    panelTextValidate() {
+        if (this.paneltext.value === "") {
+            return false;
+        } else return true;
+    }
 };
 
 export {
