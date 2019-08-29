@@ -20,8 +20,13 @@
         height: 93px;
         padding: 5px;
         outline: none;
+        font-family: $main-font;
         font-size: $size-m;
         resize: none;
+
+        &.alert {
+            border-color: $task-delete;
+        }
     }
 
     .addTaskBtn {

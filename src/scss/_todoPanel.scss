@@ -1,7 +1,9 @@
 .todo_Panel {
+    height: auto;
     padding: 40px 41px 41px 33px;
     background-color: $task-field-color;
     box-shadow: $border-shadow;
+    transition: height 1s;
 
     .search_Panel {
         display: flex;
