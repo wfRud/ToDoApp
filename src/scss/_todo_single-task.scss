@@ -148,23 +148,5 @@
 
 // Task Delete Effects
 .todo_single-task.delete {
-    border-bottom: $border-bottom-delete;
-    animation: zoomOut 1.2s;
-
-    &:last-child {
-        .icon-delete {
-            background-image: url("data:image/svg+xml, #{$hover-icon-delete}");
-            transform: scale(1.6);
-        }
-    }
-
-    .single_task_content {
-        .task_date {
-            padding-top: 5px;
-        }
-
-        &::before {
-            background-color: $task-delete;
-        }
-    }
+    animation: zoomOut 1.5s;
 }

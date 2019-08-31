@@ -1,5 +1,10 @@
+import {
+    runInThisContext
+} from "vm";
+
 class SingleNote {
     constructor() {
+        this.singleTask = document.createElement('div');
         this.taskText = document.createElement('textarea');
         this.iconEdit = document.createElement('span');
         this.iconDone = document.createElement('span');
@@ -7,12 +12,11 @@ class SingleNote {
     }
 
     initTask(text) {
-        const singleTask = document.createElement('div');
         const taskContent = document.createElement('div');
         const dateBar = document.createElement('p');
         const iconCnt = document.createElement('div');
 
-        singleTask.className = 'todo_single-task';
+        this.singleTask.className = 'todo_single-task';
         taskContent.className = 'single_task_content';
         dateBar.className = 'task_date';
         this.taskText.className = 'task_text';
@@ -33,10 +37,38 @@ class SingleNote {
         iconCnt.appendChild(this.iconDone);
         iconCnt.appendChild(this.iconDelete);
 
-        singleTask.appendChild(taskContent);
-        singleTask.appendChild(iconCnt);
+        this.singleTask.appendChild(taskContent);
+        this.singleTask.appendChild(iconCnt);
 
-        return singleTask;
+        return this.singleTask;
+    };
+    editTask() {
+        this.iconEdit.addEventListener('click', () => {
+            this.taskText.removeAttribute('readonly');
+            this.taskText.focus();
+            this.singleTask.classList.add('edit');
+        });
+
+        this.taskText.addEventListener('blur', () => {
+            this.taskText.setAttribute('readonly', 'required');
+            this.singleTask.classList.remove('edit');
+        });
+    };
+
+    finisTheTask() {
+        this.iconDone.addEventListener('click', () => {
+            this.singleTask.classList.add('done');
+        })
+    };
+
+    deleteTask() {
+        this.iconDelete.addEventListener('click', () => {
+            this.singleTask.classList.add('delete');
+            let that = this;
+            setTimeout(function () {
+                that.singleTask.remove();
+            }, 300);
+        })
     }
 
 
