@@ -1,7 +1,9 @@
 import {
     SingleNote
 } from './_SingleNote';
-
+import {
+    Storage
+} from './_Storage';
 class TaskPanel {
     constructor() {
         this.paneltext = document.getElementById('taskPanelText');
@@ -17,15 +19,17 @@ class TaskPanel {
                 this.paneltext.classList.add('alert');
                 this.addBtn.classList.add('alert');
             } else {
+                singleNote.setIndex(singleNote, this.taskStorage);
                 this.paneltext.classList.remove('alert');
                 this.addBtn.classList.remove('alert');
                 this.toDoPanel.appendChild(singleNote.initTask(this.getTaskText()));
+                singleNote.prepareObj(this.taskStorage, singleNote.dateBar.textContent);
+                Storage.setStorage(this.taskStorage);
                 this.setEmptyValue();
-                this.pushTaskToStorage(singleNote);
-                this.getTasks();
                 singleNote.editTask();
                 singleNote.finisTheTask();
-                singleNote.deleteTask();
+                singleNote.deleteTask(this.taskStorage, singleNote.index);
+                this.getTaskStorage();
             }
         });
     };
@@ -36,13 +40,9 @@ class TaskPanel {
     setEmptyValue() {
         return this.paneltext.value = "";
     };
-    pushTaskToStorage(element) {
-        this.taskStorage.push(element);
-    }
-    getTasks() {
+    getTaskStorage() {
         console.log(this.taskStorage);
-    };
-
+    }
     panelTextValidate() {
         if (this.paneltext.value === "") {
             return false;

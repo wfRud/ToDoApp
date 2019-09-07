@@ -5,6 +5,9 @@ import '../images/icons/mode_24px.svg';
 import {
     TaskPanel
 } from './_TaskPanel';
+import {
+    Storage
+} from './_Storage';
 
 // const task = new SingleNote();
 // const todoPanel = document.querySelector('.todo_Panel');
@@ -12,3 +15,6 @@ import {
 // todoPanel.appendChild(task.initTask());
 const taskPanel = new TaskPanel();
 taskPanel.addTask();
+// localStorage.clear();
+
+Storage.displayStorage();

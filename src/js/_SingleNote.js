@@ -1,11 +1,9 @@
-import {
-    runInThisContext
-} from "vm";
-
 class SingleNote {
     constructor() {
+        this.index = null;
         this.singleTask = document.createElement('div');
         this.taskText = document.createElement('textarea');
+        this.dateBar = document.createElement('p');
         this.iconEdit = document.createElement('span');
         this.iconDone = document.createElement('span');
         this.iconDelete = document.createElement('span');
@@ -13,12 +11,11 @@ class SingleNote {
 
     initTask(text) {
         const taskContent = document.createElement('div');
-        const dateBar = document.createElement('p');
         const iconCnt = document.createElement('div');
 
         this.singleTask.className = 'todo_single-task';
         taskContent.className = 'single_task_content';
-        dateBar.className = 'task_date';
+        this.dateBar.className = 'task_date';
         this.taskText.className = 'task_text';
         iconCnt.className = 'task_Icons';
         this.iconEdit.className = 'icon icon-edit';
@@ -27,10 +24,10 @@ class SingleNote {
 
         this.taskText.setAttribute('readonly', 'required');
 
-        dateBar.textContent = `${new Date().toLocaleDateString()}, ${new Date().toLocaleTimeString()}`;
+        this.dateBar.textContent = `${new Date().toLocaleDateString()}, ${new Date().toLocaleTimeString()}`;
         this.taskText.textContent = text;
 
-        taskContent.appendChild(dateBar);
+        taskContent.appendChild(this.dateBar);
         taskContent.appendChild(this.taskText);
 
         iconCnt.appendChild(this.iconEdit);
@@ -57,22 +54,43 @@ class SingleNote {
 
     finisTheTask() {
         this.iconDone.addEventListener('click', () => {
-            this.singleTask.classList.add('done');
+            this.singleTask.classList.toggle('done');
         })
     };
 
-    deleteTask() {
+    deleteTask(arr, el) {
         this.iconDelete.addEventListener('click', () => {
             this.singleTask.classList.add('delete');
             let that = this;
             setTimeout(function () {
                 that.singleTask.remove();
             }, 300);
-        })
+            this.removeTaskFromStorage(arr, el);
+            this.resetIndex(arr);
+            localStorage.clear();
+            localStorage.setItem('Items', arr);
+        });
+    };
+    setIndex(el, arr) {
+        this.index = arr.indexOf(el);
+    };
+    resetIndex(arr) {
+        arr.forEach((el, i) => {
+            el.index = i;
+        });
+    };
+
+    removeTaskFromStorage(arr) {
+        arr = arr.splice(this.index, 1);
+    };
+    prepareObj(tasksObjStorage, date) {
+        const noteObj = {
+            noteText: this.taskText.value,
+            date: date,
+        }
+        tasksObjStorage.push(noteObj);
     }
-
-
-}
+};
 
 export {
     SingleNote
