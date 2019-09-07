@@ -23,6 +23,9 @@ class Storage {
                 singleTask.toDoPanel.appendChild(singleNote.initTask());
                 singleNote.dateBar.textContent = element.date;
                 singleNote.taskText.textContent = element.noteText;
+                singleNote.editTask();
+                singleNote.deleteTask(singleTask.taskStorage, singleNote.index);
+                singleNote.finisTheTask();
                 console.log(element);
             });
         } else {
