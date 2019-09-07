@@ -9,10 +9,8 @@ import {
     Storage
 } from './_Storage';
 
-// const task = new SingleNote();
-// const todoPanel = document.querySelector('.todo_Panel');
 
-// todoPanel.appendChild(task.initTask());
+
 const taskPanel = new TaskPanel();
 taskPanel.addTask();
 // localStorage.clear();

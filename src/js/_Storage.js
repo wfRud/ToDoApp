@@ -26,7 +26,6 @@ class Storage {
                 singleNote.editTask();
                 singleNote.deleteTask(singleTask.taskStorage, singleNote.index);
                 singleNote.finisTheTask();
-                console.log(element);
             });
         } else {
             console.log(`Storage is empty`);

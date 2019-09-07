@@ -29,8 +29,7 @@ class TaskPanel {
                 singleNote.editTask();
                 singleNote.finisTheTask();
                 singleNote.deleteTask(this.taskStorage, singleNote.index);
-                this.getTaskStorage();
-            }
+            };
         });
     };
 
@@ -40,9 +39,6 @@ class TaskPanel {
     setEmptyValue() {
         return this.paneltext.value = "";
     };
-    getTaskStorage() {
-        console.log(this.taskStorage);
-    }
     panelTextValidate() {
         if (this.paneltext.value === "") {
             return false;
