@@ -6,7 +6,9 @@ import { TaskPanel } from "./_TaskPanel";
 import { Storage } from "./_Storage";
 
 const taskPanel = new TaskPanel();
-taskPanel.addTask();
-// localStorage.clear();
+const storage = new Storage();
 
-Storage.displayStorage();
+taskPanel.addTask();
+taskPanel.searching();
+
+storage.displayStorage();

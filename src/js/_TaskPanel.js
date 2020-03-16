@@ -5,6 +5,8 @@ class TaskPanel {
     this.panelText = document.getElementById("taskPanelText");
     this.addBtn = document.querySelector(".addTaskBtn");
     this.toDoPanel = document.querySelector(".todo_Panel");
+    this.tasksContainer = document.querySelector(".tasks_Container");
+    this.searchInput = document.getElementById("search_Task");
     this.taskStorage = [];
   }
 
@@ -18,19 +20,25 @@ class TaskPanel {
         singleNote.setIndex(singleNote, this.taskStorage);
         this.panelText.classList.remove("alert");
         this.addBtn.classList.remove("alert");
-        this.toDoPanel.appendChild(singleNote.initTask(this.getTaskText()));
+        this.tasksContainer.appendChild(
+          singleNote.initTask(this.getTaskText())
+        );
         singleNote.prepareObj(this.taskStorage, singleNote.dateBar.textContent);
         Storage.setStorage(this.taskStorage);
         this.setEmptyValue();
         singleNote.editTask();
-        singleNote.finisTheTask();
+        singleNote.finishTheTask();
         singleNote.deleteTask(this.taskStorage, singleNote.index);
+        console.log(this.taskStorage);
       }
     });
   }
 
   getTaskText() {
     return this.panelText.value;
+  }
+  getSearchText() {
+    return this.searchInput.value;
   }
   setEmptyValue() {
     return (this.panelText.value = "");
@@ -39,6 +47,39 @@ class TaskPanel {
     if (this.panelText.value === "") {
       return false;
     } else return true;
+  }
+  searching() {
+    // Get tasks text from storage to compare with search input value
+    const tasksContent = () => {
+      const tasks = Storage.getStorage();
+      return tasks.map(element => {
+        return element.noteText;
+      });
+    };
+
+    this.searchInput.addEventListener("input", () => {
+      const values = tasksContent();
+
+      // Clear tasks list
+      this.tasksContainer.textContent = "";
+
+      // Compare each task with input value
+      const searchedItem = task => {
+        return task.includes(this.getSearchText());
+      };
+
+      // Get array of match elements
+      const searched = values.filter(searchedItem);
+
+      // Render match elements
+      searched.forEach(item => {
+        const singleNote = new SingleNote();
+        this.tasksContainer.appendChild(singleNote.initTask(item));
+        singleNote.editTask();
+        singleNote.finishTheTask();
+        singleNote.deleteTask(this.taskStorage, singleNote.index);
+      });
+    });
   }
 }
 
