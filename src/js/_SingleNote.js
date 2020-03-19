@@ -58,38 +58,49 @@ class SingleNote {
     });
   }
 
-  deleteTask(arr, el) {
+  deleteTask(arr) {
     this.iconDelete.addEventListener("click", () => {
       this.singleTask.classList.add("delete");
       let that = this;
       setTimeout(function() {
         that.singleTask.remove();
       }, 300);
-      this.removeTaskFromStorage(arr, el);
+      this.removeTaskFromStorage(arr);
       this.resetIndex(arr);
       localStorage.clear();
-      localStorage.setItem("Items", JSON.stringify(arr));
+      localStorage.setItem(
+        "Items",
+        JSON.stringify(this.prepareObjToSetStorage(arr))
+      );
       console.log(arr);
     });
   }
-  setIndex(el, arr) {
-    this.index = arr.indexOf(el);
+  setIndex(arr, value) {
+    this.index = arr.findIndex(element => {
+      return element.taskText.value === value;
+    });
   }
   resetIndex(arr) {
     arr.forEach((el, i) => {
       el.index = i;
+      this.index = i;
     });
   }
 
   removeTaskFromStorage(arr) {
     arr = arr.splice(this.index, 1);
+    console.log(arr, this.index);
   }
-  prepareObj(tasksObjStorage, date) {
-    const noteObj = {
-      noteText: this.taskText.value,
-      date: date
-    };
-    tasksObjStorage.push(noteObj);
+  prepareObjToSetStorage(arr) {
+    const objects = arr.map(element => {
+      const noteObj = {
+        noteText: element.taskText.value,
+        date: element.dateBar.textContent,
+        index: element.index
+      };
+      return noteObj;
+    });
+    return objects;
   }
 }
 

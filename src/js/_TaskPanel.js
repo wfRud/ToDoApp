@@ -7,29 +7,34 @@ class TaskPanel {
     this.toDoPanel = document.querySelector(".todo_Panel");
     this.tasksContainer = document.querySelector(".tasks_Container");
     this.searchInput = document.getElementById("search_Task");
-    this.taskStorage = [];
+    // this.taskStorage = [];
   }
 
   addTask() {
     this.addBtn.addEventListener("click", () => {
-      const singleNote = new SingleNote();
       if (!this.panelTextValidate()) {
         this.panelText.classList.add("alert");
         this.addBtn.classList.add("alert");
       } else {
-        singleNote.setIndex(singleNote, this.taskStorage);
+        const singleNote = new SingleNote();
         this.panelText.classList.remove("alert");
         this.addBtn.classList.remove("alert");
         this.tasksContainer.appendChild(
           singleNote.initTask(this.getTaskText())
         );
-        singleNote.prepareObj(this.taskStorage, singleNote.dateBar.textContent);
-        Storage.setStorage(this.taskStorage);
+        Storage.taskStorage().push(singleNote);
+        singleNote.setIndex(Storage.taskStorage(), this.getTaskText());
+        Storage.setStorage(
+          singleNote.prepareObjToSetStorage(Storage.taskStorage())
+        );
         this.setEmptyValue();
         singleNote.editTask();
         singleNote.finishTheTask();
-        singleNote.deleteTask(this.taskStorage, singleNote.index);
-        console.log(this.taskStorage);
+        singleNote.deleteTask(Storage.taskStorage());
+
+        console.log(Storage.taskStorage());
+        console.log(singleNote.prepareObjToSetStorage(Storage.taskStorage()));
+        console.log(this);
       }
     });
   }
@@ -43,11 +48,13 @@ class TaskPanel {
   setEmptyValue() {
     return (this.panelText.value = "");
   }
+
   panelTextValidate() {
     if (this.panelText.value === "") {
       return false;
     } else return true;
   }
+
   searching() {
     // Get tasks text from storage to compare with search input value
     const tasksContent = () => {
@@ -56,7 +63,7 @@ class TaskPanel {
         return element.noteText;
       });
     };
-
+    // !! fixed delete searched element
     this.searchInput.addEventListener("input", () => {
       const values = tasksContent();
 
@@ -75,9 +82,11 @@ class TaskPanel {
       searched.forEach(item => {
         const singleNote = new SingleNote();
         this.tasksContainer.appendChild(singleNote.initTask(item));
+        console.log(item);
         singleNote.editTask();
         singleNote.finishTheTask();
-        singleNote.deleteTask(this.taskStorage, singleNote.index);
+        singleNote.deleteTask(Storage.taskStorage());
+        console.log(singleNote);
       });
     });
   }
