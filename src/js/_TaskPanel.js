@@ -60,10 +60,10 @@ class TaskPanel {
     const tasksContent = () => {
       const tasks = Storage.getStorage();
       return tasks.map(element => {
-        return element.noteText;
+        return { noteText: element.noteText, index: element.index };
       });
     };
-    // !! fixed delete searched element
+
     this.searchInput.addEventListener("input", () => {
       const values = tasksContent();
 
@@ -72,7 +72,7 @@ class TaskPanel {
 
       // Compare each task with input value
       const searchedItem = task => {
-        return task.includes(this.getSearchText());
+        return task.noteText.includes(this.getSearchText());
       };
 
       // Get array of match elements
@@ -81,12 +81,11 @@ class TaskPanel {
       // Render match elements
       searched.forEach(item => {
         const singleNote = new SingleNote();
-        this.tasksContainer.appendChild(singleNote.initTask(item));
-        console.log(item);
+        this.tasksContainer.appendChild(singleNote.initTask(item.noteText));
+        singleNote.index = item.index;
         singleNote.editTask();
         singleNote.finishTheTask();
         singleNote.deleteTask(Storage.taskStorage());
-        console.log(singleNote);
       });
     });
   }
