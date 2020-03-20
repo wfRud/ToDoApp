@@ -7,7 +7,6 @@ class TaskPanel {
     this.toDoPanel = document.querySelector(".todo_Panel");
     this.tasksContainer = document.querySelector(".tasks_Container");
     this.searchInput = document.getElementById("search_Task");
-    // this.taskStorage = [];
   }
 
   addTask() {
@@ -31,10 +30,6 @@ class TaskPanel {
         singleNote.editTask();
         singleNote.finishTheTask();
         singleNote.deleteTask(Storage.taskStorage());
-
-        console.log(Storage.taskStorage());
-        console.log(singleNote.prepareObjToSetStorage(Storage.taskStorage()));
-        console.log(this);
       }
     });
   }

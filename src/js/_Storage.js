@@ -24,7 +24,6 @@ class Storage {
       storage.forEach(element => {
         const singleNote = new SingleNote();
         singleTask.tasksContainer.appendChild(singleNote.initTask());
-        // singleTask.taskStorage.push(singleNote);
         this.taskStorage().push(singleNote);
         singleNote.dateBar.textContent = element.date;
         singleNote.taskText.textContent = element.noteText;
@@ -32,12 +31,9 @@ class Storage {
         singleNote.editTask();
         singleNote.deleteTask(this.taskStorage());
         singleNote.finishTheTask();
-
-        console.log(singleTask.taskStorage);
-        console.log(singleTask);
       });
     } else {
-      console.log(`Storage is empty`);
+      console.info(`Storage is empty`);
     }
   }
 }

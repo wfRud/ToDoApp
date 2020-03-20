@@ -1,3 +1,4 @@
+import { Storage } from "./_Storage";
 class SingleNote {
   constructor() {
     this.index = null;
@@ -49,6 +50,7 @@ class SingleNote {
     this.taskText.addEventListener("blur", () => {
       this.taskText.setAttribute("readonly", "required");
       this.singleTask.classList.remove("edit");
+      Storage.setStorage(this.prepareObjToSetStorage(Storage.taskStorage()));
     });
   }
 
@@ -72,7 +74,6 @@ class SingleNote {
         "Items",
         JSON.stringify(this.prepareObjToSetStorage(arr))
       );
-      console.log(arr);
     });
   }
   setIndex(arr, value) {
@@ -89,8 +90,8 @@ class SingleNote {
 
   removeTaskFromStorage(arr) {
     arr = arr.splice(this.index, 1);
-    console.log(arr, this.index);
   }
+
   prepareObjToSetStorage(arr) {
     const objects = arr.map(element => {
       const noteObj = {
