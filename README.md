@@ -5,7 +5,7 @@ Aplikacja umozliwiwa dodawanie usuwanie edycję zadań.
 
 ## Demo aplikacji:
 
-[wfrud.pl/todoapp](https://www.wfrud.pl/todoapp)<br/>
+[wfrud.pl/todoapp](http://www.wfrud.pl/todoapp)<br/>
 
 ### Użyte technologie
 
